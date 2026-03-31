@@ -1,0 +1,83 @@
+.ll-section-wrap{
+  margin-bottom: 50px;
+}
+.ll-body-text{
+  width: 30%;
+  padding: 0 0 0 30px;
+  height: 500px;
+  overflow: scroll;
+}
+.ll-body-text h3{
+  font-size: 22px;
+  font-family: 'Khula', sans-serif;
+  text-transform: uppercase;
+  color: #362F2D;
+}
+.ll-body-text p{
+  font-family: 'Gudea', sans-serif;
+  text-align: justify;
+  font-size: 14px;
+  color: #7A7169;
+}
+.ll-body-inline{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: -4px;
+}
+.look-and-listen-video{
+  width: 70%;
+}
+.look-and-listen-video iframe{
+  width: 100%;
+  height: 500px;
+  border: solid 2px #F2EFF1;
+}
+.ll-carousel-wrap{
+  width: 70%;
+  margin: 0;
+  padding: 0;
+}
+.ll-video-carousel{
+  width: 100%;
+  margin-top: 20px;
+}
+.ll-carousel-arrow{
+  position: absolute;
+  z-index: 200;
+  bottom: 50px;
+  background-color: rgba(0,0,0,.3);
+  color: #fff;
+  padding: 15px 5px;
+}
+.ll-carousel-arrow:hover{
+  cursor: pointer;
+  background-color: rgba(0,0,0,.5);
+}
+.ll-carousel-arrow span{
+  font-size: 20px;
+}
+.ll-video-carousel iframe{
+  border: solid 2px #fff;
+  height: 150px;
+}
+.iframe-wrap p{
+  font-size: 17px;
+  font-family: 'Khula', sans-serif;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+  margin-bottom: -5px;
+}
+/*
+font-family: 'Khula', sans-serif;
+font-family: 'Josefin Slab', serif;
+font-family: 'Comfortaa', cursive;
+font-family: 'Nunito Sans', sans-serif;
+font-family: 'BenchNine', sans-serif;
+font-family: 'Gudea', sans-serif;
+font-family: 'Prompt', sans-serif;
+font-family: 'Sarala', sans-serif;
+font-family: 'Antic Slab', serif;
+font-family: 'Advent Pro', sans-serif;
+font-family: 'Antic', sans-serif;
+*/

@@ -1,0 +1,63 @@
+.login-background{
+  background-color: #929BA7;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.login-wrap{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  text-align: center;
+  padding: 25% 0 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("../imgs/pascal-story-img.jpg");
+  opacity: .85;
+}
+.login-wrap input{
+  margin: 0 auto;
+  display: block;
+  width: 30%;
+  min-width: 310px;
+  border-radius: 5px;
+  border: solid #fff 2px;
+  padding: 5px;
+  z-index: 2;
+  color: #151513;
+  font-size: 14px;
+  background-color: rgba(255,255,255,.87);
+  text-align: center;
+  box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+}
+.login-wrap button{
+  margin: 0 auto;
+  display: block;
+  margin-top: 10px;
+  width: 30%;
+  min-width: 310px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Khula', sans-serif;
+  /*background-color: #6E6B63;*/
+  /*background-color: #392F2B;*/
+  background-color: #151513;
+  border: solid 1px #F2F0EB;
+  color: #F2F0EB;
+  padding: 8px 0 5px 0;
+  border-radius: 5px;
+  transition: .25s;
+  -webkit-transition: .25s;
+}
+.login-wrap button:hover{
+  cursor: pointer;
+  /*background-color: #998675;*/
+  background-color: rgba(129, 138, 150, 1);
+  color: #F2F0EB;
+  box-shadow: 2px 2px 2px rgba(21, 21, 19, .3);
+}

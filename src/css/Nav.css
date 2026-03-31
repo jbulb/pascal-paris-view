@@ -1,0 +1,135 @@
+nav{
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  padding-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid #F2F0EB;
+}
+.scrolly-nav{
+  text-align: right;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  display: none;
+}
+.nav-logo-doc{
+  width: 100%;
+  height: 55px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../imgs/pascal-logo-no-r.jpg");
+  margin-top: 15px;
+  margin-bottom: -10px;
+}
+.nav-logo{
+  position: absolute;
+  left: 50px;
+  width: 144px;
+  height: 46px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../imgs/pascal-logo-no-r.jpg");
+  margin-top: 15px;
+}
+.nav-anchors-wrap{
+  margin: 0 50px 0 0;
+}
+.anchor-wrap-doc a{
+  font-size: 17px;
+}
+.anchor-wrap-scrolly a{
+  text-align: right;
+  font-size: 15px;
+}
+.nav-anchors-wrap a{
+  display: inline-block;
+  margin: 25px 5px 0;
+  padding: 0 5px;
+  text-transform: uppercase;
+  font-family: 'Khula', sans-serif;
+  color: #818A96;
+  transition: .4s;
+  -webkit-transition: .4s;
+}
+.nav-anchors-wrap a:hover{
+  cursor: pointer;
+  color: #000;
+}
+a.nav-anchors-wrap-selected{
+  color: #000;
+  text-decoration: underline;
+}
+.shopping-cart-anchor{
+  position: relative;
+}
+.cart-link-label{
+  display: inline-block;
+  background-color: #151513;
+  color: #F2F0EB !important;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background-color .25s;
+}
+.cart-link-label:hover{
+  background-color: rgba(129, 138, 150, 1);
+}
+.cart-link-label .fa{
+  margin-right: 5px;
+  font-size: 15px;
+}
+.shopping-cart-dropdown{
+  display: none;
+  position: absolute;
+  top: 22px;
+  right: 5px;
+  width: 500px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border-left: 2px solid #C7C5C1;
+  border-right: 2px solid #C7C5C1;
+  border-bottom: 2px solid #C7C5C1;
+  z-index: 5000;
+}
+.checkout a{
+  text-decoration: none;
+  width: 100%;
+  background-color: #151513;
+  color: #F2F0EB;
+  padding: 10px 15px;
+  border-radius: 2px;
+  transition: .25s;
+  -webkit-transition: .25s;
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+.checkout a:hover{
+  cursor: pointer;
+  background-color: rgba(129, 138, 150, 1);
+  color: #F2F0EB;
+  box-shadow: 2px 2px 2px rgba(21, 21, 19, .3);
+}
+
+/* Hamburger toggle - hidden on desktop */
+.hamburger-toggle{
+  display: none;
+}
+
+/*
+font-family: 'Khula', sans-serif;
+font-family: 'Josefin Slab', serif;
+font-family: 'Comfortaa', cursive;
+font-family: 'Nunito Sans', sans-serif;
+font-family: 'BenchNine', sans-serif;
+font-family: 'Gudea', sans-serif;
+font-family: 'Prompt', sans-serif;
+font-family: 'Sarala', sans-serif;
+font-family: 'Antic Slab', serif;
+font-family: 'Advent Pro', sans-serif;
+font-family: 'Antic', sans-serif;
+*/

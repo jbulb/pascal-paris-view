@@ -1,0 +1,52 @@
+.around-the-world-carousel{
+  width: 100%;
+  margin: 10px 0 50px;
+}
+.around-the-world-container{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.around-the-world-carousel-arrow{
+  position: absolute;
+  z-index: 200;
+  bottom: 170px;
+  background-color: rgba(0,0,0,.3);
+  color: #fff;
+  padding: 15px 5px;
+}
+.around-the-world-carousel-arrow:hover{
+  cursor: pointer;
+  background-color: rgba(0,0,0,.5);
+}
+.around-the-world-carousel-arrow span{
+  font-size: 20px;
+}
+.around-the-world-carousel-img{
+  display: block;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  border: solid 2px #fff;
+}
+.around-the-world-carousel-img-0{
+  background-image: url("../imgs/pp-a-t-w-1.png");
+}
+.around-the-world-carousel-img-1{
+  background-image: url("../imgs/pp-a-t-w-2.png");
+}
+.around-the-world-carousel-img-2{
+  background-image: url("../imgs/pp-a-t-w-3.png");
+}
+.around-the-world-carousel-img-3{
+  background-image: url("../imgs/pp-a-t-w-4.png");
+}
+.around-the-world-carousel-img-4{
+  background-image: url("../imgs/pp-a-t-w-5.png");
+}
+.around-the-world-carousel-img-5{
+  background-image: url("../imgs/pp-a-t-w-6.png");
+}

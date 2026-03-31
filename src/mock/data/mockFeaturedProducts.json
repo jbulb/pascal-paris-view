@@ -1,0 +1,21 @@
+[{
+  "img": "featured-products-items-img-0",
+  "title": "Mock - Control Hairspray",
+  "desc": "Define and maintain your style",
+  "price": "$26.00"
+}, {
+  "img": "featured-products-items-img-1",
+  "title": "Mock - Le Deux",
+  "desc": "Boosts curls and reduces frizz",
+  "price": "$30.00"
+}, {
+  "img": "featured-products-items-img-2",
+  "title": "Mock - Illusionist Spray",
+  "desc": "deposits color and helps stop fading",
+  "price": "$34.00"
+}, {
+  "img": "featured-products-items-img-3",
+  "title": "Mock - Flex Paste",
+  "desc": "highlights with shine and body",
+  "price": "$28.00"
+}]

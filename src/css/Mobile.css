@@ -1,0 +1,327 @@
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Tablet */
+@media (max-width: 1080px) {
+
+  /* Nav */
+  nav{
+    padding-bottom: 10px;
+  }
+  .hamburger-toggle{
+    display: block !important;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #151513;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .hamburger-toggle:hover{
+    color: #818A96;
+  }
+  .nav-anchors-wrap{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 !important;
+    padding: 20px 20px 0;
+  }
+  .nav-anchors-wrap.mobile-menu-open{
+    display: flex;
+  }
+  .nav-anchors-wrap a{
+    display: block !important;
+    width: 100%;
+    max-width: 400px;
+    font-size: 13px !important;
+    margin: 4px 0 !important;
+    padding: 10px 0 !important;
+    text-align: center;
+    background-color: #F2F0EB;
+    border-radius: 4px;
+    color: #151513 !important;
+    transition: background-color .25s;
+  }
+  .nav-anchors-wrap a:hover{
+    background-color: #818A96;
+    color: #fff !important;
+    text-decoration: none;
+  }
+  .nav-anchors-wrap .shopping-cart-anchor{
+    margin-top: 4px !important;
+  }
+  .nav-anchors-wrap .cart-link-label{
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 13px;
+    border-radius: 4px;
+  }
+  .nav-logo-doc{
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .scrolly-nav{
+    display: none !important;
+  }
+  .scrolly-nav .nav-logo{
+    position: relative;
+    left: auto;
+    width: 80px;
+    height: 26px;
+    margin: 8px auto 0;
+    display: block;
+  }
+
+  /* Section wrap */
+  .section-wrap{
+    padding: 0 15px;
+  }
+
+  /* Featured products - 2 col on tablet */
+  .featured-products-items{
+    width: 50% !important;
+    height: 400px;
+  }
+
+  /* Products grid - 2 col */
+  .products-items{
+    width: 50% !important;
+  }
+
+  /* Ingredients - 2 col */
+  .ingredients-item{
+    width: 50%;
+  }
+  .ingredients-img{
+    width: 180px;
+    height: 180px;
+  }
+
+  /* Blog bottom items */
+  .blog-post-bottom-item{
+    width: 50%;
+  }
+
+  /* Product page sidebar */
+  .products-nav{
+    width: 100% !important;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  .products-sides-items{
+    width: 100% !important;
+  }
+
+  /* Shopping cart */
+  .shopping-cart-sides-inline{
+    display: block;
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .shopping-cart-sides-inline-checkout{
+    margin-bottom: 40px;
+  }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+
+  /* Nav - phone overrides */
+  .nav-anchors-wrap a{
+    max-width: 300px;
+  }
+  .nav-logo-doc{
+    height: 30px;
+    margin-top: 8px;
+  }
+  .nav-logo{
+    position: relative;
+    left: auto;
+    width: 80px;
+    height: 26px;
+    margin: 10px auto 0;
+  }
+  .shopping-cart-dropdown{
+    width: 280px;
+    right: -10px;
+  }
+
+  /* Carousel */
+  .carousel-img{
+    height: 200px;
+  }
+  .carousel-img h1{
+    font-size: 150%;
+  }
+  .carousel-img-0 h1{
+    top: 40px;
+    left: 5%;
+  }
+  .carousel-img-0 p{
+    top: 100px;
+    left: 7%;
+  }
+  .carousel-img-1 h1{
+    top: 30px;
+    left: 5%;
+  }
+  .carousel-img-1 p{
+    top: 85px;
+    left: 8%;
+  }
+  .carousel-arrow{
+    bottom: 80px;
+  }
+
+  /* Section wrap */
+  .section-wrap h1{
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  /* Featured products - single col */
+  .featured-products-items{
+    width: 100% !important;
+    height: auto;
+    padding-bottom: 15px;
+  }
+
+  /* Products grid - single col */
+  .products-items{
+    width: 100% !important;
+    height: auto;
+    padding-bottom: 15px;
+  }
+  .products-items-img{
+    height: 220px;
+  }
+
+  /* Product header */
+  .product-header-wrap{
+    height: 180px;
+    margin-bottom: 50px;
+  }
+  .product-header-img{
+    height: 180px;
+  }
+  .product-header-text{
+    padding-left: 20px;
+  }
+  .product-header-text h1{
+    padding-top: 25px;
+    font-size: 20px;
+  }
+  .product-wrap{
+    margin-top: 50px;
+  }
+
+  /* Quick view modal */
+  .product-quickview{
+    max-width: 95%;
+    margin: 5% auto;
+  }
+  .product-quickview-sides{
+    display: block;
+    width: 100% !important;
+  }
+  .product-quickview-sides-img{
+    height: 200px;
+  }
+  .product-quickview-sides-text{
+    border-left: none;
+    border-top: solid 1px #eee;
+  }
+
+  /* Ingredients - single col on phone */
+  .ingredients-item{
+    width: 100%;
+  }
+  .ingredients-img{
+    width: 160px;
+    height: 160px;
+  }
+
+  /* Around the world */
+  .around-the-world-carousel-img{
+    height: 180px;
+  }
+  .around-the-world-carousel-arrow{
+    bottom: 70px;
+  }
+
+  /* Blog */
+  .blog-header{
+    height: 180px;
+  }
+  .blog-item{
+    display: block;
+    width: 100%;
+  }
+  .blog-item-img{
+    height: 180px;
+  }
+  .blog-post-bottom-item{
+    display: block;
+    width: 100%;
+  }
+  .blog-post-bottom-item-img{
+    height: 160px;
+  }
+  .blog-post-body-img{
+    float: none;
+    width: 100% !important;
+    height: 200px !important;
+    margin: 0 0 15px 0;
+  }
+
+  /* Shopping cart items */
+  .shopping-item-img{
+    width: 50px;
+    height: 50px;
+  }
+  .shopping-item-text{
+    width: 40%;
+    padding: 0 5px;
+  }
+  .shopping-item-amount{
+    width: 15%;
+  }
+  .shopping-item-price{
+    width: 15%;
+    font-size: 14px;
+  }
+  .shopping-item-header{
+    font-size: 14px;
+  }
+  .shopping-item-description{
+    font-size: 11px;
+  }
+
+  /* Footer */
+  .inline-footer-isles{
+    display: block;
+    margin-right: 0;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Add to cart button */
+  .add-to-cart{
+    margin-top: 15px;
+  }
+  .add-to-cart a{
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  /* Related items */
+  .related-item{
+    width: 50%;
+  }
+}

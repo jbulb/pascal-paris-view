@@ -1,0 +1,96 @@
+.home-page-carousel-container{
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 100;
+}
+.carousel-img{
+  display: block;
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+  position: relative;
+}
+.carousel-img:hover{
+  cursor: pointer;
+}
+.carousel-img-0{
+  background-image: url("../imgs/oladimeji-odunsi-306172.jpg");
+}
+.carousel-img-1{
+  background-image: url("../imgs/averie-woodard-319832.jpg");
+}
+.carousel-img h1{
+  position: absolute;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 320%;
+}
+.carousel-img p{
+  position: absolute;
+  font-family: 'Khula', sans-serif;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.carousel-img-0 h1{
+  top: 100px;
+  left: 20%;
+  color: #fff;
+}
+.carousel-img-0 p{
+  top: 220px;
+  left: 22%;
+  color: #fff;
+}
+.carousel-img-1 h1{
+  top: 80px;
+  left: 32%;
+  color: #fff;
+}
+.carousel-img-1 p{
+  top: 180px;
+  left: 35%;
+  color: #fff;
+}
+/*
+font-family: 'Satisfy', cursive;
+font-family: 'Marck Script', cursive;
+font-family: 'Caveat', cursive;
+font-family: 'Yesteryear', cursive;
+
+font-family: 'Calligraffitti', cursive;
+font-family: 'Give You Glory', cursive;
+font-family: 'La Belle Aurore', cursive;
+font-family: 'League Script', cursive;
+font-family: 'Princess Sofia', cursive;
+
+font-family: 'Homemade Apple', cursive;
+*/
+.carousel-arrow{
+  position: absolute;
+  z-index: 200;
+  bottom: 200px;
+  background-color: rgba(0,0,0,.3);
+  color: #fff;
+  padding: 15px 5px;
+}
+.carousel-arrow:hover{
+  cursor: pointer;
+  background-color: rgba(0,0,0,.5);
+}
+.carousel-arrow-left{
+  left: 2px;
+}
+.carousel-arrow-right{
+  right: 2px;
+}
+.carousel-arrow span{
+  font-size: 25px;
+}

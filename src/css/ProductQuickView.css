@@ -1,0 +1,143 @@
+.product-quickview-wrap{
+  display: none;
+  /*background-color: rgba(129, 122, 110, .8);*/
+  background-color: rgba(242, 240, 235, .8);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3000;
+  overflow: scroll;
+  text-align: center;
+}
+.product-quickview{
+  position: relative;
+  display: block;
+  margin: 10% auto;
+  max-width: 700px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+  background-color: rgba(242, 240, 235, 1);
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 20px 0px;
+}
+.exit-quickview{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border-radius: 50%;
+  padding-top: 2px;
+  padding-left: 1px;
+  font-size: 15px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  background-color: #818A96;
+  color: #fff;
+  transition: .25s;
+  -webkit-transition: .25s;
+}
+.exit-quickview:hover{
+  cursor: pointer;
+  background-color: #5E656E;
+  box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+}
+.product-quickview-sides{
+  display: inline-block;
+  vertical-align: top;
+}
+.product-quickview-sides-img{
+  width: 40%;
+  height: 350px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../imgs/CAn-ACC-RCCN-2.5TL-CN-N-HI.jpg");
+}
+.product-quickview-sides-text{
+  width: 60%;
+  text-align: left;
+  padding: 30px 15px;
+  font-family: 'Khula', sans-serif;
+  border-left: solid 1px #eee;
+}
+.product-quickview-header{
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  font-size: 32px;
+  text-transform: uppercase;
+  margin-top: -12px;
+}
+.product-quickview-description{
+  padding: 5px 15px 5px 0;
+  font-size: 13px;
+  margin: 0;
+  color: #818A96;
+}
+.product-quickview-price{
+  /*color: #C46856;*/
+  color: #151513;
+  font-size: 30px;
+  height: 35px;
+}
+.quickview-add-to-cart{
+  text-transform: uppercase;
+}
+.quantity-size{
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+}
+.quantity-size p{
+  margin-bottom: 4px;
+  color: #818A96;
+}
+.quantity-size-inline{
+  display: inline-block;
+  vertical-align: top;
+  color: #817A6E;
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 50%;
+}
+.product-quantity{
+}
+.product-quantity input{
+  width: 95%;
+  height: 40px;
+  border-radius: 2px;
+  border: solid #818A96 2px;
+  padding-left: 10px;
+  background-color: rgba(255,255,255,.01);
+  z-index: 2;
+  color: #151513;
+  font-size: 14px;
+}
+.product-size{
+  position: relative;
+  width: 50%;
+}
+.product-size select{
+  width: 100%;
+  height: 40px;
+  border-radius: 2px;
+  border: solid #818A96 2px;
+  padding-left: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: rgba(255,255,255,.01);
+  z-index: 2;
+  color: #151513;
+  font-size: 14px;
+}
+.product-size span{
+  position: absolute;
+  right: 10px;
+  top: 35px;
+  font-size: 13px;
+  color: #818A96;
+  z-index: 1;
+}

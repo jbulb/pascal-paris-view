@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.topOfPage{
+  padding-top: 5px;
+}
+.section-wrap{
+  width: 100%;
+  max-width: 1200px;
+  display: block;
+  margin: 0 auto;
+}
+.section-wrap h1{
+  border-bottom: solid 2px #515861;
+  text-transform: uppercase;
+  width: 100%;
+  font-family: 'Advent Pro', sans-serif;
+  color: #515861;
+  margin-top: 70px;
+  text-align: left;
+}

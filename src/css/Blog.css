@@ -1,0 +1,184 @@
+.blog-wrap{
+  width: 100%;
+}
+.blog-header{
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("../imgs/matthew-kane-65194.jpg");
+}
+.blog-item-wrap{
+  margin-bottom: 50px;
+}
+.blog-item{
+  display: inline-block;
+  width: 50%;
+  padding: 0 15px;
+}
+.blog-item-img{
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.blog-item-img-0{
+  background-image: url("../imgs/ariana-prestes-30668.jpg");
+}
+.blog-item-img-1{
+  background-image: url("../imgs/pratiksha-mohanty-430366.jpg");
+}
+.blog-item-img-2{
+  background-image: url("../imgs/kaci-baum-266661.jpg");
+}
+.blog-item-img-3{
+  background-image: url("../imgs/joshua-reddekopp-357095.jpg");
+}
+.blog-item p{
+  font-weight: 300;
+  color: #858E9A;
+  font-family: 'Khula', sans-serif;
+  padding: 15px 0;
+  text-align: justify;
+  font-size: 15px;
+}
+.blog-item a{
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 0 5px 20px 15px;
+  color: #3B3F45;
+  font-family: 'Khula', sans-serif;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin-top: -10px;
+}
+.blog-item a:hover{
+  cursor: pointer;
+  color: #5E6166;
+}
+.load-more-blog-wrap{
+  width: 100%;
+  padding-bottom: 50px;
+  text-align: center;
+}
+.load-more-blog-wrap a{
+  text-decoration: none;
+  background-color: #151513;
+  font-size: 17px;
+  color: #F2F0EB;
+  padding: 10px 25px;
+  border-radius: 2px;
+  transition: .25s;
+  -webkit-transition: .25s;
+}
+.load-more-blog-wrap a:hover{
+  cursor: pointer;
+  background-color: rgba(129, 138, 150, 1);
+  color: #F2F0EB;
+  box-shadow: 2px 2px 2px rgba(21, 21, 19, .3);
+}
+.blog-post-wrap{
+  max-width: 1000px;
+}
+.blog-post-wrap h2{
+  text-transform: uppercase;
+  font-family: 'Advent Pro', sans-serif;
+  color: #151513;
+  text-align: center;
+  padding: 20px 10px 0;
+}
+.blog-post-wrap h4{
+  font-family: 'Khula', sans-serif;
+  color: #777875;
+  text-align: center;
+  margin: 10px;
+}
+.blog-post-header-img{
+  margin: 0 auto;
+  width: 100%;
+  height: 300px;
+  border-radius: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-image: url("../imgs/ariana-prestes-30668.jpg");
+}
+.blog-post-body{
+  padding: 35px 10px 50px;
+  font-family: 'Khula', sans-serif;
+}
+.blog-post-body p{
+  font-size: 19px;
+  color: #515861;
+}
+.blog-post-body-header{
+  margin-bottom: 50px;
+}
+.blog-post-countdown-wrap{
+  padding-bottom: 20px;
+}
+.blog-post-body-img{
+  float: left;
+  margin-right: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  border-radius: 3px;
+}
+.blog-post-body-img-argan-oil{
+  width: 288px;
+  height: 400px;
+  background-image: url("../imgs/roberta-sorge-142255.jpg");
+}
+.blog-post-body-img-wet-hair{
+  width: 288px;
+  height: 289px;
+  background-image: url("../imgs/haley-phelps-119782.jpg");
+}
+.blog-post-body-img-comb{
+  width: 386px;
+  height: 400px;
+  background-image: url("../imgs/alessandro-sacchi-272244.jpg");
+}
+.blog-post-bottom-item-wrap{
+  border-top: solid 2px #ddd;
+  margin-bottom: 50px;
+}
+.blog-post-bottom-item{
+  display: inline-block;
+  width: 33.333%;
+  padding: 0 15px;
+}
+.blog-post-bottom-item-img{
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.blog-post-bottom-item p{
+  font-weight: 300;
+  color: #858E9A;
+  font-family: 'Khula', sans-serif;
+  padding: 15px 0;
+  text-align: justify;
+  font-size: 15px;
+}
+.blog-post-bottom-item a{
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 0 5px 20px 15px;
+  color: #3B3F45;
+  font-family: 'Khula', sans-serif;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin-top: -10px;
+}
+.blog-post-bottom-item a:hover{
+  cursor: pointer;
+  color: #5E6166;
+}

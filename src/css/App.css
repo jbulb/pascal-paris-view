@@ -1,0 +1,38 @@
+.App {
+
+}
+.go-back-up-arrow{
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,.8);
+	height: 45px;
+	width: 45px;
+	border: solid 10px rgba(0,0,0,.0);
+	box-shadow: 2px 2px 2px rgba(0,0,0,.3);
+	z-index: 2000;
+	background-size: contain;
+	background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../imgs/up-arrow.png");
+}
+.go-back-up-arrow:hover{
+	cursor: pointer;
+}
+.home-anchor{
+  display: block;
+  width: 100%;
+  text-align: right;
+  padding: 20px 10px 0;
+  color: #3B3F45;
+  font-family: 'Khula', sans-serif;
+  text-transform: uppercase;
+  text-decoration: underline;
+  word-wrap: break-word;
+}
+.home-anchor:hover{
+  cursor: pointer;
+  color: #5E6166;
+}

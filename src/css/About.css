@@ -1,0 +1,39 @@
+.about-wrap{
+  width: 100%;
+  background-color: #929BA7;
+}
+.about-wrap p{
+  font-weight: 300;
+  font-size: 19px;
+  text-align: justify;
+}
+.about-panel{
+  position: relative;
+  width: 100%;
+  height: 700px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: .8;
+}
+.about-panel-0{
+  background-image: url("../imgs/annie-spratt-277569.jpg");
+}
+.about-panel-1{
+  background-image: url("../imgs/jared-rice-388260.jpg");
+}
+.about-panel-2{
+  background-image: url("../imgs/jason-briscoe-149781.jpg");
+}
+.about-panel-3{
+  background-image: url("../imgs/eli-defaria-14555.jpg");
+}
+.about-panel-4{
+  background-image: url("../imgs/john-towner-125990.jpg");
+}
+.about-panel-5{
+  background-image: url("../imgs/alexandre-godreau-347348.jpg");
+}
+.about-panel-6{
+  background-image: url("../imgs/pascal-story-img.jpg");
+}

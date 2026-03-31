@@ -1,0 +1,42 @@
+.ingredients-wrap{
+  width: 100%;
+  text-align: center;
+}
+.ingredients-item{
+  display: inline-block;
+  width: 25%;
+  text-align: center;
+  padding: 15px 0;
+  vertical-align: top;
+}
+.ingredients-img{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto;
+}
+.ingredients-img-0{
+  background-image: url("../imgs/papaver-rhoeas-63741.jpg");
+}
+.ingredients-img-1{
+  background-image: url("../imgs/jessica-ruscello-99577.jpg");
+}
+.ingredients-img-2{
+  background-image: url("../imgs/roberta-sorge-142255.jpg");
+}
+.ingredients-img-3{
+  background-image: url("../imgs/leonard-cotte-300212.jpg");
+}
+.ingredients-header{
+  width: 100%;
+}
+.ingredients-description{
+  width: 100%;
+  font-family: 'Khula', sans-serif;
+  color: #818A96;
+  padding: 0 10px;
+  font-size: 15px;
+}

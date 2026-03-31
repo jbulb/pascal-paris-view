@@ -1,0 +1,19 @@
+.pascal-story-wrap{
+  width: 70%;
+  margin-bottom: 50px;
+}
+.pascal-story-img{
+  width: 250px;
+  height: 180px;
+  margin: 0 15px 5px 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../imgs/pascal-story-img.jpg");
+  float: left;
+}
+.pascal-story-wrap p{
+  font-size: 15px;
+  color: #7A7169;
+  font-family: 'Khula', sans-serif;
+}
