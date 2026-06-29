@@ -11,8 +11,7 @@ export const fetchBlogItems = createAsyncThunk(
     if (!response.ok) throw new Error(response.statusText);
     const json = await response.json();
 
-    const data = json.blogItems ?? [];
-    // If the API returned an empty array, fall back to mock data
+    const data = Array.isArray(json) ? json : (json.blogItems ?? []);
     return data.length > 0 ? data : mockBlogItems;
   }
 );

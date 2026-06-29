@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchBlogItems } from '../../store/blogSlice';
 import '../../index.css';
 import '../../css/App.css';
@@ -9,7 +10,6 @@ function BlogPosts() {
   const config = useSelector((state) => state.config);
   const blogItems = useSelector((state) => state.blog.items);
   const status = useSelector((state) => state.blog.status);
-  const error = useSelector((state) => state.blog.error);
 
   useEffect(() => {
     if (config.blogItemsUrl) {
@@ -24,14 +24,14 @@ function BlogPosts() {
   return (
     <div className="blog-wrap">
       <div className="section-wrap blog-post-bottom-item-wrap">
-        {blogItems.map((blogItem, index) => {
+        {blogItems.map((blogItem) => {
           const blogItemBackgroundClasses = `blog-post-bottom-item-img ${blogItem.img}`;
           return (
-            <div key={blogItem.header + index} className="blog-post-bottom-item">
+            <div key={blogItem.id} className="blog-post-bottom-item">
               <h1>{blogItem.header}</h1>
               <div className={blogItemBackgroundClasses}></div>
-              <p>{blogItem.desc} z...</p>
-              <a href="/blog-post">Read More</a>
+              <p>{blogItem.desc}</p>
+              <Link to={`/blog-post/${blogItem.id}`}>Read More</Link>
             </div>
           );
         })}

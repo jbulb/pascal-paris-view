@@ -1,18 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import mockPaymentClientToken from '../mock/data/mockPaymentClientToken.json';
-
-// ---------------------------------------------------------------------------
-// Async thunk: fetch Braintree payment client token
-// ---------------------------------------------------------------------------
-export const fetchPaymentClientToken = createAsyncThunk(
-  'cart/fetchPaymentClientToken',
-  async (url) => {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(response.statusText);
-    const json = await response.json();
-    return json.clientToken;
-  }
-);
+import { createSlice } from '@reduxjs/toolkit';
 
 // ---------------------------------------------------------------------------
 // Slice
@@ -21,11 +7,6 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     items: [],
-    paymentClientToken: {
-      data: null,
-      status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
-      error: null,
-    },
   },
 
   reducers: {
@@ -55,24 +36,6 @@ const cartSlice = createSlice({
     clearCart(state) {
       state.items = [];
     },
-  },
-
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchPaymentClientToken.pending, (state) => {
-        state.paymentClientToken.status = 'loading';
-        state.paymentClientToken.error = null;
-      })
-      .addCase(fetchPaymentClientToken.fulfilled, (state, action) => {
-        state.paymentClientToken.status = 'succeeded';
-        state.paymentClientToken.data = action.payload;
-      })
-      .addCase(fetchPaymentClientToken.rejected, (state) => {
-        // Fall back to mock client token on failure
-        state.paymentClientToken.status = 'failed';
-        state.paymentClientToken.data = mockPaymentClientToken.clientToken;
-        state.paymentClientToken.error = 'Failed to fetch payment client token';
-      });
   },
 });
 

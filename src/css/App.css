@@ -1,5 +1,5 @@
 .App {
-
+  overflow-x: clip;
 }
 .go-back-up-arrow{
 	display: none;

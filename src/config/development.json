@@ -1,11 +1,10 @@
 {
-  "blogItemsUrl": "/tolvatech/content/blog/items",
-  "featuredProductsUrl": "/tolvatech/content/products/featured",
+  "blogItemsUrl": "/api/blog/items",
+  "featuredProductsUrl": "/api/products/featured",
   "productsUrl": {
-    "featured": "/tolvatech/content/products/featured",
-    "biomineral": "/tolvatech/content/products/biomineral",
-    "botanical": "/tolvatech/content/products/botanical"
+    "featured": "/api/products/featured",
+    "biomineral": "/api/products/biomineral",
+    "botanical": "/api/products/botanical"
   },
-  "paymentClientTokenUrl": "/tolvatech/cart/client/token",
-  "paymentCheckoutUrl": "/tolvatech/cart/checkout"
+  "paymentCheckoutUrl": "/api/cart/checkout"
 }

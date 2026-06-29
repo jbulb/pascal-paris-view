@@ -9,6 +9,7 @@ import '../../css/About.css';
 function About() {
   const userToken = useSelector((state) => state.user.token);
   const navigate = useNavigate();
+  const [sections, setSections] = useState([]);
   const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
@@ -16,6 +17,13 @@ function About() {
       navigate('/login');
     }
   }, [userToken, navigate]);
+
+  useEffect(() => {
+    fetch('/api/sections/about%')
+      .then((r) => r.ok ? r.json() : [])
+      .then(setSections)
+      .catch(() => setSections([]));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setShowArrow(window.scrollY > 300);
@@ -29,6 +37,41 @@ function About() {
     return <div></div>;
   }
 
+  const renderSection = (section) => {
+    if (section.section_type === 'about_image') {
+      return (
+        <div
+          key={section.id}
+          className="about-panel"
+          style={{ backgroundImage: `url(${section.img})` }}
+        >
+          {(section.title || section.body) && (
+            <div className="about-panel-overlay">
+              {section.title && <h1>{section.title}</h1>}
+              {section.body && <p>{section.body}</p>}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    if (section.section_type === 'about_text_dark') {
+      return (
+        <div key={section.id} className="about-text-section about-text-section-dark">
+          {section.title && <h2>{section.title}</h2>}
+          {section.body && section.body.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+        </div>
+      );
+    }
+
+    return (
+      <div key={section.id} className="about-text-section">
+        {section.title && <h2>{section.title}</h2>}
+        {section.body && section.body.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+      </div>
+    );
+  };
+
   return (
     <div className="App topOfPage">
       <div
@@ -38,13 +81,7 @@ function About() {
       ></div>
       <Nav />
       <div className="about-wrap">
-        <div className="about-panel about-panel-6"></div>
-        <div className="about-panel about-panel-4"></div>
-        <div className="about-panel about-panel-3"></div>
-        <div className="about-panel about-panel-0" id="ingredients"></div>
-        <div className="about-panel about-panel-5"></div>
-        <div className="about-panel about-panel-1"></div>
-        <div className="about-panel about-panel-2"></div>
+        {sections.map(renderSection)}
       </div>
       <Footer />
     </div>

@@ -1,10 +1,16 @@
 nav{
   width: 100%;
   background-color: #fff;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   padding-bottom: 15px;
   text-align: center;
   border-bottom: 2px solid #F2F0EB;
+}
+.nav-spacer{
+  height: 100px;
 }
 .scrolly-nav{
   text-align: right;
@@ -65,6 +71,8 @@ a.nav-anchors-wrap-selected{
 }
 .shopping-cart-anchor{
   position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 .cart-link-label{
   display: inline-block;
@@ -118,6 +126,28 @@ a.nav-anchors-wrap-selected{
 /* Hamburger toggle - hidden on desktop */
 .hamburger-toggle{
   display: none;
+}
+
+/* Signed-in user badge — top-left so it stays visible alongside the hamburger on the right */
+.nav-user-badge{
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-family: 'Khula', sans-serif;
+  font-size: 13px;
+  color: #151513;
+  background-color: #F2F0EB;
+  padding: 6px 12px;
+  border-radius: 4px;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 10;
+}
+.nav-user-badge .fa{
+  margin-right: 6px;
+  color: #818A96;
 }
 
 /*

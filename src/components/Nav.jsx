@@ -1,17 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { userSignedOut } from '../store/userSlice';
 import { removeFromCart } from '../store/cartSlice';
+import { signOut as cognitoSignOut, getUserInfo } from '../auth/cognito';
 import '../css/Nav.css';
 
 function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
+  const [user, setUser] = useState(null);
+  const [collections, setCollections] = useState([]);
 
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getUserInfo().then(setUser).catch(() => setUser(null));
+    fetch('/api/collections')
+      .then((r) => r.ok ? r.json() : [])
+      .then(setCollections)
+      .catch(() => setCollections([]));
+  }, []);
+
+  const admin = !!user && user.groups.includes('admin');
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -21,8 +33,15 @@ function Nav() {
     setMobileMenuOpen(false);
   };
 
-  const signOut = () => {
-    dispatch(userSignedOut());
+  const handleSignOut = () => {
+    cognitoSignOut();
+    setUser(null);
+    closeMobileMenu();
+    navigate('/');
+  };
+
+  const handleSignIn = () => {
+    closeMobileMenu();
     navigate('/login');
   };
 
@@ -71,61 +90,60 @@ function Nav() {
   );
 
   return (
-    <div>
-      <nav>
-        <Link to="/">
-          <div className="nav-logo-doc"></div>
-        </Link>
-        <a className="hamburger-toggle" onClick={toggleMobileMenu}>
-          <i className={mobileMenuOpen ? 'fa fa-times' : 'fa fa-bars'}></i>
-        </a>
-        <div className={'nav-anchors-wrap anchor-wrap-doc' + (mobileMenuOpen ? ' mobile-menu-open' : '')}>
-          <Link to="/biomineral" onClick={closeMobileMenu}>Biomineral Collection</Link>
-          <Link to="/botanical" onClick={closeMobileMenu}>Botanical Collection</Link>
-          <Link to="/bundle-packages" onClick={closeMobileMenu}>Bundle Packages</Link>
-          <Link to="/merchandise" onClick={closeMobileMenu}>Merchandise</Link>
-          <Link to="/blog" onClick={closeMobileMenu}>Blog</Link>
-          <Link to="/ourstory" onClick={closeMobileMenu}>About</Link>
-          <a onClick={signOut}>Sign Out</a>
-          <Link
-            to="/cart"
-            onClick={closeMobileMenu}
-            onMouseEnter={showCartDropdown}
-            onMouseLeave={hideCartDropdown}
-            className="shopping-cart-anchor"
-          >
-            {renderCartDropdown()}
-            <span className="cart-link-label">
-              <i className="fa fa-shopping-cart"></i> Cart ({cartCount})
-            </span>
-          </Link>
+    <>
+    <nav>
+      {user && (
+        <div className="nav-user-badge" title={user.email || user.name}>
+          <i className="fa fa-user-circle"></i> {user.name}
         </div>
-      </nav>
-      <nav className="scrolly-nav">
-        <Link to="/">
-          <div className="nav-logo"></div>
+      )}
+      <Link to="/">
+        <div className="nav-logo-doc"></div>
+      </Link>
+      <a className="hamburger-toggle" onClick={toggleMobileMenu}>
+        <i className={mobileMenuOpen ? 'fa fa-times' : 'fa fa-bars'}></i>
+      </a>
+      <div className={'nav-anchors-wrap anchor-wrap-doc' + (mobileMenuOpen ? ' mobile-menu-open' : '')}>
+        {user && (
+          <span className="nav-mobile-greeting">
+            <i className="fa fa-user-circle"></i> {user.name}
+          </span>
+        )}
+        <Link to="/" onClick={closeMobileMenu}>
+          <i className="fa fa-home"></i> Home
         </Link>
-        <div className="nav-anchors-wrap anchor-wrap-scrolly">
-          <Link to="/biomineral">Biomineral Collection</Link>
-          <Link to="/botanical">Botanical Collection</Link>
-          <Link to="/bundle-packages">Bundle Packages</Link>
-          <Link to="/merchandise">Merchandise</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/ourstory">About</Link>
-          <Link
-            to="/cart"
-            onMouseEnter={showCartDropdown}
-            onMouseLeave={hideCartDropdown}
-            className="shopping-cart-anchor"
-          >
-            {renderCartDropdown()}
-            <span className="cart-link-label">
-              <i className="fa fa-shopping-cart"></i> Cart ({cartCount})
-            </span>
+        {collections.map((c) => (
+          <Link key={c.id} to={`/${c.name}`} onClick={closeMobileMenu}>
+            {c.display_name || c.name}
           </Link>
+        ))}
+        <Link to="/blog" onClick={closeMobileMenu}>Blog</Link>
+        <Link to="/ourstory" onClick={closeMobileMenu}>About</Link>
+        {admin && (
+          <Link to="/admin/products" onClick={closeMobileMenu}>
+            <i className="fa fa-cog"></i> Admin
+          </Link>
+        )}
+        {user ? (
+          <a onClick={handleSignOut}>Sign Out</a>
+        ) : (
+          <a onClick={handleSignIn}>Sign In</a>
+        )}
+        <div
+          onClick={() => { closeMobileMenu(); navigate('/cart'); }}
+          onMouseEnter={showCartDropdown}
+          onMouseLeave={hideCartDropdown}
+          className="shopping-cart-anchor"
+        >
+          {renderCartDropdown()}
+          <span className="cart-link-label">
+            <i className="fa fa-shopping-cart"></i> Cart ({cartCount})
+          </span>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
+    <div className="nav-spacer"></div>
+    </>
   );
 }
 

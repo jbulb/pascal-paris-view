@@ -26,7 +26,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2016 PASCAL Paris - All Rights Reserved.</p>
+          <p>&copy; 2026 PASCAL Paris - All Rights Reserved.</p>
           <p>
             Powered by{' '}
             <a href="https://tolvatech.com/" target="_blank" rel="noopener noreferrer">

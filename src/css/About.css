@@ -1,6 +1,6 @@
 .about-wrap{
   width: 100%;
-  background-color: #929BA7;
+  background-color: #fff;
 }
 .about-wrap p{
   font-weight: 300;
@@ -10,11 +10,10 @@
 .about-panel{
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 500px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  opacity: .8;
 }
 .about-panel-0{
   background-image: url("../imgs/annie-spratt-277569.jpg");
@@ -36,4 +35,92 @@
 }
 .about-panel-6{
   background-image: url("../imgs/pascal-story-img.jpg");
+  background-position: center top;
+}
+
+/* Hero overlay on first panel */
+.about-panel-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 60px;
+  background: linear-gradient(transparent, rgba(21, 21, 19, 0.8));
+  color: #F2F0EB;
+}
+.about-panel-overlay h1{
+  font-family: 'Josefin Slab', serif;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.about-panel-overlay p{
+  font-family: 'Khula', sans-serif;
+  font-size: 18px;
+  color: #F2F0EB;
+  text-align: left;
+  margin: 0;
+}
+
+/* Text sections between panels */
+.about-text-section{
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+.about-text-section h2{
+  font-family: 'Josefin Slab', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #151513;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 25px;
+  text-align: center;
+}
+.about-text-section p{
+  font-family: 'Khula', sans-serif;
+  font-size: 17px;
+  color: #515861;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* Dark variant for final CTA section */
+.about-text-section-dark{
+  background-color: #151513;
+  max-width: 100%;
+  padding: 60px 30px;
+}
+.about-text-section-dark h2{
+  color: #F2F0EB;
+}
+.about-text-section-dark p{
+  color: #C7C5C1;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-panel{
+    height: 300px;
+  }
+  .about-panel-overlay{
+    padding: 30px 20px;
+  }
+  .about-panel-overlay h1{
+    font-size: 32px;
+  }
+  .about-text-section{
+    padding: 40px 20px;
+  }
+  .about-text-section h2{
+    font-size: 24px;
+  }
+  .about-text-section p{
+    font-size: 15px;
+  }
 }

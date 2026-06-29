@@ -23,8 +23,7 @@ export const fetchProducts = createAsyncThunk(
     if (!response.ok) throw new Error(response.statusText);
     const json = await response.json();
 
-    // The old API could return { products: [...] } or { featuredProducts: [...] }
-    let data = json.products ?? json.featuredProducts ?? [];
+    let data = Array.isArray(json) ? json : (json.products ?? json.featuredProducts ?? []);
     if (data.length === 0) {
       data = mockDataByType[productType] ?? [];
     }

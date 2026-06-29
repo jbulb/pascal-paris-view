@@ -1,6 +1,11 @@
-/* Prevent horizontal scroll */
-html, body {
-  overflow-x: hidden;
+/* Prevent horizontal scroll — use clip instead of hidden to preserve sticky positioning */
+body {
+  overflow-x: clip;
+}
+
+/* Hide mobile-only greeting on desktop */
+.nav-mobile-greeting{
+  display: none;
 }
 
 /* Tablet */
@@ -10,15 +15,38 @@ html, body {
   nav{
     padding-bottom: 10px;
   }
+  .nav-user-badge{
+    display: none;
+  }
+  .nav-mobile-greeting{
+    display: block !important;
+    width: 100%;
+    max-width: 400px;
+    font-size: 13px;
+    margin: 0 0 8px;
+    padding: 10px 0;
+    text-align: center;
+    color: #151513;
+    font-family: 'Khula', sans-serif;
+    border-bottom: 1px solid #e8e6e1;
+  }
+  .nav-mobile-greeting .fa{
+    margin-right: 6px;
+    color: #818A96;
+  }
   .hamburger-toggle{
     display: block !important;
     position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
+    top: 10px;
+    right: 14px;
+    font-size: 26px;
     color: #151513;
     cursor: pointer;
     z-index: 10;
+    min-width: 44px;
+    min-height: 44px;
+    line-height: 44px;
+    text-align: center;
   }
   .hamburger-toggle:hover{
     color: #818A96;
@@ -37,9 +65,11 @@ html, body {
     display: block !important;
     width: 100%;
     max-width: 400px;
-    font-size: 13px !important;
+    font-size: 15px !important;
     margin: 4px 0 !important;
-    padding: 10px 0 !important;
+    padding: 0 !important;
+    min-height: 44px;
+    line-height: 44px;
     text-align: center;
     background-color: #F2F0EB;
     border-radius: 4px;
@@ -52,13 +82,18 @@ html, body {
     text-decoration: none;
   }
   .nav-anchors-wrap .shopping-cart-anchor{
+    display: block !important;
+    width: 100%;
+    max-width: 400px;
     margin-top: 4px !important;
   }
   .nav-anchors-wrap .cart-link-label{
     display: block;
     width: 100%;
-    padding: 10px 0;
-    font-size: 13px;
+    padding: 0;
+    min-height: 44px;
+    line-height: 44px;
+    font-size: 15px;
     border-radius: 4px;
   }
   .nav-logo-doc{
@@ -104,8 +139,16 @@ html, body {
   }
 
   /* Blog bottom items */
+  .blog-post-bottom-item-wrap{
+    display: flex;
+    flex-wrap: wrap;
+  }
   .blog-post-bottom-item{
-    width: 50%;
+    width: 33.333%;
+    box-sizing: border-box;
+  }
+  .blog-post-bottom-item h1{
+    min-height: 5.5em;
   }
 
   /* Product page sidebar */
@@ -133,7 +176,8 @@ html, body {
 @media (max-width: 600px) {
 
   /* Nav - phone overrides */
-  .nav-anchors-wrap a{
+  .nav-anchors-wrap a,
+  .nav-anchors-wrap .shopping-cart-anchor{
     max-width: 300px;
   }
   .nav-logo-doc{
@@ -266,9 +310,15 @@ html, body {
   .blog-item-img{
     height: 180px;
   }
+  .blog-post-bottom-item-wrap{
+    display: block !important;
+  }
   .blog-post-bottom-item{
-    display: block;
-    width: 100%;
+    display: block !important;
+    width: 100% !important;
+  }
+  .blog-post-bottom-item h1{
+    min-height: auto !important;
   }
   .blog-post-bottom-item-img{
     height: 160px;

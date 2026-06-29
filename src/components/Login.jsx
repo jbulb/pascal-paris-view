@@ -1,60 +1,93 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userSignedIn } from '../store/userSlice';
-import UserUtil from '../util/UserUtil';
+import { signIn, completeNewPassword } from '../auth/cognito';
 import '../css/Login.css';
 
 function Login() {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showError, setShowError] = useState(false);
-  const dispatch = useDispatch();
+  const [newPassword, setNewPassword] = useState('');
+  const [error, setError] = useState('');
+  const [challengeUser, setChallengeUser] = useState(null);
   const navigate = useNavigate();
 
-  const login = () => {
-    if (password === UserUtil.expectedUserToken()) {
-      dispatch(userSignedIn(password));
+  const handleLogin = async () => {
+    setError('');
+    try {
+      const result = await signIn(email, password);
+      if (result.type === 'NEW_PASSWORD_REQUIRED') {
+        setChallengeUser(result.user);
+      } else {
+        navigate('/');
+      }
+    } catch (err) {
+      setError(err.message || 'Login failed');
+    }
+  };
+
+  const handleNewPassword = async () => {
+    setError('');
+    try {
+      await completeNewPassword(challengeUser, newPassword);
       navigate('/');
-    } else {
-      setShowError(true);
+    } catch (err) {
+      setError(err.message || 'Failed to set new password');
     }
   };
 
-  const handlePasswordChange = (evt) => {
-    setShowError(false);
-    setPassword(evt.target.value);
+  const handleKeyPress = (evt, action) => {
+    if (evt.key === 'Enter') action();
   };
 
-  const handleFocus = () => {
-    setShowError(false);
-  };
-
-  const handleKeyPress = (evt) => {
-    if (evt.key === 'Enter') {
-      login();
-    }
-  };
-
-  const messageText = 'Wrong password. Please try again.';
-  const messageStyle = {
-    color: 'white',
-    fontWeight: 'bold',
-    marginBottom: '5px',
-    opacity: '100%',
-    display: showError ? 'block' : 'none',
-  };
+  if (challengeUser) {
+    return (
+      <div className="login-background">
+        <div className="login-wrap">
+          <p style={{ color: 'white', marginBottom: '10px' }}>
+            Please set a new password
+          </p>
+          {error && (
+            <div style={{ color: '#ff6b6b', fontWeight: 'bold', marginBottom: '5px' }}>
+              {error}
+            </div>
+          )}
+          <input
+            type="password"
+            placeholder="New password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            onKeyDown={(e) => handleKeyPress(e, handleNewPassword)}
+          />
+          <button onClick={handleNewPassword}>Set Password</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="login-background">
       <div className="login-wrap">
-        <div style={messageStyle}>{messageText}</div>
+        {error && (
+          <div style={{ color: '#ff6b6b', fontWeight: 'bold', marginBottom: '5px' }}>
+            {error}
+          </div>
+        )}
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => { setError(''); setEmail(e.target.value); }}
+          onKeyDown={(e) => handleKeyPress(e, handleLogin)}
+        />
         <input
           type="password"
-          onFocus={handleFocus}
-          onChange={handlePasswordChange}
-          onKeyPress={handleKeyPress}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => { setError(''); setPassword(e.target.value); }}
+          onKeyDown={(e) => handleKeyPress(e, handleLogin)}
+          style={{ marginTop: '10px' }}
         />
-        <button onClick={login}>Enter</button>
+        <button onClick={handleLogin}>Sign In</button>
       </div>
     </div>
   );

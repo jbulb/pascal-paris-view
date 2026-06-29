@@ -10,9 +10,12 @@ import '../../css/ShoppingCart.css';
 function ShoppingCart() {
   const userToken = useSelector((state) => state.user.token);
   const cartItems = useSelector((state) => state.cart.items);
+  const checkoutUrl = useSelector((state) => state.config.paymentCheckoutUrl);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showArrow, setShowArrow] = useState(false);
+  const [checkoutError, setCheckoutError] = useState(null);
+  const [checkingOut, setCheckingOut] = useState(false);
 
   useEffect(() => {
     if (!UserUtil.isValidUserToken(userToken)) {
@@ -30,9 +33,29 @@ function ShoppingCart() {
 
   const parsePrice = (priceStr) => parseFloat(priceStr.replace('$', ''));
 
-  const handleCheckout = () => {
-    // TODO: Integrate with Stripe Checkout once API key is available
-    alert('Stripe Checkout will be connected once the API key is configured.');
+  const handleCheckout = async () => {
+    if (cartItems.length === 0 || checkingOut) return;
+    setCheckingOut(true);
+    setCheckoutError(null);
+    try {
+      const response = await fetch(checkoutUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: cartItems.map((item) => ({
+            title: item.title,
+            quantity: item.quantity,
+          })),
+        }),
+      });
+      if (!response.ok) throw new Error('Checkout failed');
+      const { url } = await response.json();
+      // Redirect to Stripe's hosted checkout page.
+      window.location.assign(url);
+    } catch {
+      setCheckoutError('Something went wrong starting checkout. Please try again.');
+      setCheckingOut(false);
+    }
   };
 
   if (!UserUtil.isValidUserToken(userToken)) {
@@ -123,9 +146,12 @@ function ShoppingCart() {
                 </p>
               </div>
               <div className="checkout-form-wrap">
-                <button onClick={handleCheckout} type="button">
-                  Checkout with Stripe
+                <button onClick={handleCheckout} type="button" disabled={checkingOut}>
+                  {checkingOut ? 'Redirecting…' : 'Checkout with Stripe'}
                 </button>
+                {checkoutError && (
+                  <p style={{ color: '#c0392b', marginTop: '10px' }}>{checkoutError}</p>
+                )}
               </div>
             </div>
           )}

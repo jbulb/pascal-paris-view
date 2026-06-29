@@ -6,6 +6,5 @@
     "biomineral": "/tolvatech/content/products/biomineral",
     "botanical": "/tolvatech/content/products/botanical"
   },
-  "paymentClientTokenUrl": "/tolvatech/cart/client/token",
   "paymentCheckoutUrl": "/tolvatech/cart/checkout"
 }

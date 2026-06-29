@@ -9,7 +9,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // uses localStorage
+const storage = {
+  getItem: (key) => Promise.resolve(localStorage.getItem(key)),
+  setItem: (key, item) => Promise.resolve(localStorage.setItem(key, item)),
+  removeItem: (key) => Promise.resolve(localStorage.removeItem(key)),
+};
 
 import cartReducer from './cartSlice';
 import userReducer from './userSlice';
