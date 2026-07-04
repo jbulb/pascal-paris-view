@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { removeFromCart } from '../store/cartSlice';
 import { signOut as cognitoSignOut, getUserInfo } from '../auth/cognito';
 import '../css/Nav.css';
@@ -49,6 +49,10 @@ function Nav() {
   const hideCartDropdown = () => setCartDropdownVisible(false);
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  // Highlight the nav link for the page you're currently on.
+  const navClass = ({ isActive }) =>
+    isActive ? 'nav-anchors-wrap-selected' : undefined;
 
   const renderCartDropdown = () => (
     <div className="shopping-cart-dropdown" style={{ display: cartDropdownVisible ? 'block' : 'none' }}>
@@ -109,20 +113,20 @@ function Nav() {
             <i className="fa fa-user-circle"></i> {user.name}
           </span>
         )}
-        <Link to="/" onClick={closeMobileMenu}>
+        <NavLink to="/" end onClick={closeMobileMenu} className={navClass}>
           <i className="fa fa-home"></i> Home
-        </Link>
+        </NavLink>
         {collections.map((c) => (
-          <Link key={c.id} to={`/${c.name}`} onClick={closeMobileMenu}>
+          <NavLink key={c.id} to={`/${c.name}`} onClick={closeMobileMenu} className={navClass}>
             {c.display_name || c.name}
-          </Link>
+          </NavLink>
         ))}
-        <Link to="/blog" onClick={closeMobileMenu}>Blog</Link>
-        <Link to="/ourstory" onClick={closeMobileMenu}>About</Link>
+        <NavLink to="/blog" onClick={closeMobileMenu} className={navClass}>Blog</NavLink>
+        <NavLink to="/ourstory" onClick={closeMobileMenu} className={navClass}>About</NavLink>
         {admin && (
-          <Link to="/admin/products" onClick={closeMobileMenu}>
+          <NavLink to="/admin/products" onClick={closeMobileMenu} className={navClass}>
             <i className="fa fa-cog"></i> Admin
-          </Link>
+          </NavLink>
         )}
         {user ? (
           <a onClick={handleSignOut}>Sign Out</a>
