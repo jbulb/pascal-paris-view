@@ -192,8 +192,12 @@ body {
     margin: 10px auto 0;
   }
   .shopping-cart-dropdown{
-    width: 280px;
-    right: -10px;
+    /* Span the (full-width) cart button instead of a fixed width, so the
+       dropdown can't overflow off the left edge of a portrait phone. */
+    width: auto;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
   }
 
   /* Carousel */
