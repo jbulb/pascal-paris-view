@@ -284,6 +284,125 @@
   margin: 0 6px;
 }
 
+/* Revision history modal */
+.revision-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 21, 19, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.revision-modal {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 24px 28px;
+  max-width: 640px;
+  width: 92%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.revision-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.revision-modal-header h2 {
+  font-family: 'Khula', sans-serif;
+  font-size: 18px;
+  color: #151513;
+  margin: 0;
+}
+
+.revision-close {
+  background: none;
+  border: none;
+  font-size: 26px;
+  line-height: 1;
+  color: #818A96;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.revision-close:hover {
+  color: #151513;
+}
+
+.revision-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.revision-item {
+  border: 1px solid #e4e2dc;
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+
+.revision-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.revision-date {
+  font-family: 'Khula', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #151513;
+}
+
+.revision-action {
+  font-family: 'Khula', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #818A96;
+}
+
+.revision-author {
+  font-family: 'Khula', sans-serif;
+  font-size: 13px;
+  color: #818A96;
+}
+
+.revision-values {
+  margin: 0 0 12px 0;
+}
+
+.revision-value-row {
+  display: flex;
+  gap: 8px;
+  font-family: 'Khula', sans-serif;
+  font-size: 14px;
+  padding: 2px 0;
+}
+
+.revision-value-row dt {
+  color: #818A96;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.revision-value-row dd {
+  margin: 0;
+  color: #151513;
+  overflow-wrap: anywhere;
+}
+
 /* Empty state */
 .admin-empty {
   text-align: center;

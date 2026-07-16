@@ -4,6 +4,7 @@ import { getIdToken, isAdmin } from '../../auth/cognito';
 import Nav from '../Nav';
 import Footer from '../Footer';
 import AdminNav from './AdminNav';
+import RevisionHistory from './RevisionHistory';
 import '../../css/Admin.css';
 import '../../css/App.css';
 import '../../css/Featured.css';
@@ -33,6 +34,8 @@ function AdminProducts() {
   const [editingId, setEditingId] = useState(null);
   const [editData, setEditData] = useState({ ...EMPTY_PRODUCT });
   const [editSaving, setEditSaving] = useState(false);
+
+  const [historyItem, setHistoryItem] = useState(null);
 
   useEffect(() => {
     isAdmin().then((admin) => { if (!admin) navigate('/login'); }).catch(() => navigate('/login'));
@@ -226,6 +229,7 @@ function AdminProducts() {
       </td>
       <td data-label="Actions" className="actions-cell">
         <button className="admin-btn admin-btn-edit" onClick={() => startEdit(product)}>Edit</button>
+        <button className="admin-btn admin-btn-cancel" onClick={() => setHistoryItem(product)}>History</button>
         <button
           className={`admin-btn ${product.is_active ? 'admin-btn-delete' : 'admin-btn-save'}`}
           onClick={() => toggleActive(product)}
@@ -361,6 +365,16 @@ function AdminProducts() {
           </table>
         )}
       </div>
+      {historyItem && (
+        <RevisionHistory
+          resource="products"
+          rowId={historyItem.id}
+          itemLabel={historyItem.title}
+          authHeaders={authHeaders}
+          onRestored={() => { fetchProducts(); flash('Previous version restored'); }}
+          onClose={() => setHistoryItem(null)}
+        />
+      )}
       <Footer />
     </div>
   );

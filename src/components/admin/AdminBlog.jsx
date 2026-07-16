@@ -4,6 +4,7 @@ import { getIdToken, isAdmin } from '../../auth/cognito';
 import Nav from '../Nav';
 import Footer from '../Footer';
 import AdminNav from './AdminNav';
+import RevisionHistory from './RevisionHistory';
 import '../../css/Admin.css';
 import '../../css/App.css';
 
@@ -23,6 +24,8 @@ function AdminBlog() {
   const [editingId, setEditingId] = useState(null);
   const [editData, setEditData] = useState({ ...EMPTY });
   const [editSaving, setEditSaving] = useState(false);
+
+  const [historyItem, setHistoryItem] = useState(null);
 
   useEffect(() => {
     isAdmin().then((a) => { if (!a) navigate('/login'); }).catch(() => navigate('/login'));
@@ -128,6 +131,7 @@ function AdminBlog() {
       </td>
       <td data-label="Actions" className="actions-cell">
         <button className="admin-btn admin-btn-edit" onClick={() => startEdit(p)}>Edit</button>
+        <button className="admin-btn admin-btn-cancel" onClick={() => setHistoryItem(p)}>History</button>
         <button
           className={`admin-btn ${p.is_active ? 'admin-btn-delete' : 'admin-btn-save'}`}
           onClick={() => toggleActive(p)}
@@ -230,6 +234,16 @@ function AdminBlog() {
           </table>
         )}
       </div>
+      {historyItem && (
+        <RevisionHistory
+          resource="blog"
+          rowId={historyItem.id}
+          itemLabel={historyItem.header}
+          authHeaders={authHeaders}
+          onRestored={() => { fetchPosts(); flash('Previous version restored'); }}
+          onClose={() => setHistoryItem(null)}
+        />
+      )}
       <Footer />
     </div>
   );

@@ -4,6 +4,7 @@ import { getIdToken, isAdmin } from '../../auth/cognito';
 import Nav from '../Nav';
 import Footer from '../Footer';
 import AdminNav from './AdminNav';
+import RevisionHistory from './RevisionHistory';
 import '../../css/Admin.css';
 import '../../css/App.css';
 
@@ -33,6 +34,8 @@ function AdminSections() {
   const [editingId, setEditingId] = useState(null);
   const [editData, setEditData] = useState({ ...EMPTY });
   const [editSaving, setEditSaving] = useState(false);
+
+  const [historyItem, setHistoryItem] = useState(null);
 
   const currentType = SECTION_TYPES.find((t) => t.key === activeTab) || SECTION_TYPES[0];
 
@@ -196,6 +199,7 @@ function AdminSections() {
       </td>
       <td data-label="Actions" className="actions-cell">
         <button className="admin-btn admin-btn-edit" onClick={() => startEdit(item)}>Edit</button>
+        <button className="admin-btn admin-btn-cancel" onClick={() => setHistoryItem(item)}>History</button>
         <button
           className={`admin-btn ${item.is_active ? 'admin-btn-delete' : 'admin-btn-save'}`}
           onClick={() => toggleActive(item)}
@@ -332,6 +336,16 @@ function AdminSections() {
           </table>
         )}
       </div>
+      {historyItem && (
+        <RevisionHistory
+          resource="sections"
+          rowId={historyItem.id}
+          itemLabel={historyItem.title || historyItem.section_type}
+          authHeaders={authHeaders}
+          onRestored={() => { fetchItems(); flash('Previous version restored'); }}
+          onClose={() => setHistoryItem(null)}
+        />
+      )}
       <Footer />
     </div>
   );
