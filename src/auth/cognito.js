@@ -100,6 +100,33 @@ export function completeNewPassword(cognitoUser, newPassword) {
   });
 }
 
+export function forgotPassword(email) {
+  return new Promise((resolve, reject) => {
+    const user = new CognitoUser({
+      Username: email,
+      Pool: userPool,
+    });
+    user.forgotPassword({
+      onSuccess: (data) => resolve(data),
+      onFailure: (err) => reject(err),
+      inputVerificationCode: (data) => resolve(data),
+    });
+  });
+}
+
+export function confirmForgotPassword(email, code, newPassword) {
+  return new Promise((resolve, reject) => {
+    const user = new CognitoUser({
+      Username: email,
+      Pool: userPool,
+    });
+    user.confirmPassword(code, newPassword, {
+      onSuccess: () => resolve(),
+      onFailure: (err) => reject(err),
+    });
+  });
+}
+
 export function signOut() {
   const user = getCurrentUser();
   if (user) user.signOut();

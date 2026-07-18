@@ -61,3 +61,20 @@
   color: #F2F0EB;
   box-shadow: 2px 2px 2px rgba(21, 21, 19, .3);
 }
+.login-wrap .login-link-btn{
+  background: none;
+  border: none;
+  width: auto;
+  min-width: 0;
+  color: #F2F0EB;
+  text-transform: none;
+  font-size: 13px;
+  text-decoration: underline;
+  text-shadow: 1px 1px 2px rgba(21, 21, 19, .6);
+  padding: 6px 10px;
+}
+.login-wrap .login-link-btn:hover{
+  background: none;
+  box-shadow: none;
+  color: #fff;
+}
