@@ -1,3 +1,8 @@
+/* Light-only site: opt out of browser forced/auto dark modes (see index.html). */
+:root {
+  color-scheme: only light;
+}
+
 .App {
   overflow-x: clip;
 }
