@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './css/App.css';
 import './css/Mobile.css';
 import Home from './components/home/Home';
@@ -17,9 +18,21 @@ import AdminCategories from './components/admin/AdminCategories';
 import AdminBlog from './components/admin/AdminBlog';
 import AdminSections from './components/admin/AdminSections';
 
+// Reset scroll on every route change — otherwise the new page inherits the
+// previous page's scroll offset (e.g. opening the cart from the bottom of a
+// long product page landed below the cart contents).
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
