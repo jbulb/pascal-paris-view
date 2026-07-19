@@ -191,14 +191,9 @@ body {
     height: 26px;
     margin: 10px auto 0;
   }
-  .shopping-cart-dropdown{
-    /* Span the (full-width) cart button instead of a fixed width, so the
-       dropdown can't overflow off the left edge of a portrait phone. */
-    width: auto;
-    left: 0;
-    right: 0;
-    box-sizing: border-box;
-  }
+  /* NOTE: .shopping-cart-dropdown mobile rules moved to Nav.css — they must
+     come after the base rule in the bundle, and cross-file CSS order isn't
+     guaranteed by the build (this override silently lost in production). */
 
   /* Carousel */
   .carousel-img{

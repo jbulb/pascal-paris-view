@@ -45,7 +45,12 @@ function Nav() {
     navigate('/login');
   };
 
-  const showCartDropdown = () => setCartDropdownVisible(true);
+  // The cart dropdown is a hover affordance — only show it on devices that
+  // can actually hover. On touch devices the emulated mouseenter would open
+  // it on first tap, covering the button and trapping the user; a tap should
+  // go straight to the /cart page instead.
+  const canHover = () => window.matchMedia('(hover: hover)').matches;
+  const showCartDropdown = () => { if (canHover()) setCartDropdownVisible(true); };
   const hideCartDropdown = () => setCartDropdownVisible(false);
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);

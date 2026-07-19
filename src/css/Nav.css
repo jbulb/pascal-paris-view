@@ -96,6 +96,8 @@ a.nav-anchors-wrap-selected{
   top: 22px;
   right: 5px;
   width: 500px;
+  max-height: 70vh;
+  overflow-y: auto;
   background-color: #fff;
   padding: 10px;
   border-radius: 4px;
@@ -163,3 +165,17 @@ font-family: 'Antic Slab', serif;
 font-family: 'Advent Pro', sans-serif;
 font-family: 'Antic', sans-serif;
 */
+
+/* Portrait phones: the dropdown spans the full-width cart button instead of
+   its fixed 500px desktop width. This rule lives HERE (not Mobile.css) on
+   purpose — it must come after the base .shopping-cart-dropdown rule in the
+   production bundle, and same-file order is the only guaranteed order. */
+@media (max-width: 600px) {
+  .shopping-cart-dropdown{
+    width: auto;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    max-height: 55vh;
+  }
+}
