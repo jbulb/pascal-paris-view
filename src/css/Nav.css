@@ -90,41 +90,6 @@ a.nav-anchors-wrap-selected{
   margin-right: 5px;
   font-size: 15px;
 }
-.shopping-cart-dropdown{
-  display: none;
-  position: absolute;
-  top: 22px;
-  right: 5px;
-  width: 500px;
-  max-height: 70vh;
-  overflow-y: auto;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 4px;
-  border-left: 2px solid #C7C5C1;
-  border-right: 2px solid #C7C5C1;
-  border-bottom: 2px solid #C7C5C1;
-  z-index: 5000;
-}
-.checkout a{
-  text-decoration: none;
-  width: 100%;
-  background-color: #151513;
-  color: #F2F0EB;
-  padding: 10px 15px;
-  border-radius: 2px;
-  transition: .25s;
-  -webkit-transition: .25s;
-  margin: 20px 0 0 0;
-  text-align: center;
-}
-.checkout a:hover{
-  cursor: pointer;
-  background-color: rgba(129, 138, 150, 1);
-  color: #F2F0EB;
-  box-shadow: 2px 2px 2px rgba(21, 21, 19, .3);
-}
-
 /* Hamburger toggle - hidden on desktop */
 .hamburger-toggle{
   display: none;
@@ -165,12 +130,6 @@ a.nav-anchors-wrap-selected{
   font-size: 11px;
   font-weight: 600;
   text-align: center;
-}
-.cart-badge-anchor .shopping-cart-dropdown{
-  top: 46px;
-  right: 0;
-  text-align: left;
-  cursor: default;
 }
 
 /* Signed-in user badge — top-left so it stays visible alongside the hamburger on the right */
@@ -225,19 +184,5 @@ font-family: 'Antic', sans-serif;
   .cart-badge-anchor{
     top: 10px;
     right: 64px;
-  }
-}
-
-/* Narrow hover-capable windows: the dropdown can't anchor to the tiny badge,
-   so pin it to the viewport instead. (Touch devices never open it.) */
-@media (max-width: 600px) {
-  .shopping-cart-dropdown{
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    top: 100px;
-    width: auto;
-    box-sizing: border-box;
-    max-height: 55vh;
   }
 }

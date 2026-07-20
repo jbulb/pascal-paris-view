@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { removeFromCart, cartItemKey } from '../store/cartSlice';
 import { signOut as cognitoSignOut, getUserInfo } from '../auth/cognito';
 import '../css/Nav.css';
 
 function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cartDropdownVisible, setCartDropdownVisible] = useState(false);
   const [user, setUser] = useState(null);
   const [collections, setCollections] = useState([]);
 
   const cartItems = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,60 +42,11 @@ function Nav() {
     navigate('/login');
   };
 
-  // The cart dropdown is a hover affordance — only show it on devices that
-  // can actually hover. On touch devices the emulated mouseenter would open
-  // it on first tap, covering the button and trapping the user; a tap should
-  // go straight to the /cart page instead.
-  const canHover = () => window.matchMedia('(hover: hover)').matches;
-  const showCartDropdown = () => { if (canHover()) setCartDropdownVisible(true); };
-  const hideCartDropdown = () => setCartDropdownVisible(false);
-
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   // Highlight the nav link for the page you're currently on.
   const navClass = ({ isActive }) =>
     isActive ? 'nav-anchors-wrap-selected' : undefined;
-
-  const renderCartDropdown = () => (
-    <div className="shopping-cart-dropdown" style={{ display: cartDropdownVisible ? 'block' : 'none' }}>
-      {cartItems.map((item, index) => {
-        const shoppingBagIMGClasses = `shopping-item-img shopping-item-inline ${item.img}`;
-        return (
-          <div key={item.title + index} className="shopping-item">
-            <div className={shoppingBagIMGClasses}></div>
-            <div className="shopping-item-text shopping-item-inline">
-              <p className="shopping-item-header">{item.title}</p>
-              <p className="shopping-item-description">{item.desc || item.description}</p>
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  dispatch(removeFromCart(cartItemKey(item)));
-                }}
-              >
-                Remove Item
-              </a>
-            </div>
-            <div className="shopping-item-amount shopping-item-inline">
-              <input value={item.quantity} readOnly />
-            </div>
-            <div className="shopping-item-price shopping-item-inline">
-              <p>{item.price}</p>
-            </div>
-          </div>
-        );
-      })}
-      {cartItems.length > 0 && (
-        <div className="checkout">
-          {/* Goes to the cart page (review quantities, then pay) — label it
-              honestly so it doesn't read like a direct payment button. */}
-          <Link to="/cart">Review Bag &amp; Checkout</Link>
-        </div>
-      )}
-      {cartItems.length === 0 && (
-        <p style={{ padding: '10px', color: '#818A96' }}>Your cart is empty</p>
-      )}
-    </div>
-  );
 
   const cartTooltip = `${cartCount} item${cartCount === 1 ? '' : 's'} in cart`;
 
@@ -116,20 +64,17 @@ function Nav() {
       <a className="hamburger-toggle" onClick={toggleMobileMenu}>
         <i className={mobileMenuOpen ? 'fa fa-times' : 'fa fa-bars'}></i>
       </a>
-      {/* Always-visible cart indicator: count bubble, click -> cart,
-          hover summary dropdown on devices that can hover. */}
+      {/* Always-visible cart indicator: count bubble, one click straight to
+          the cart page. */}
       <div
         className="cart-badge-anchor"
         onClick={() => { closeMobileMenu(); navigate('/cart'); }}
-        onMouseEnter={showCartDropdown}
-        onMouseLeave={hideCartDropdown}
         role="link"
         aria-label={cartTooltip}
         title={cartTooltip}
       >
         <i className="fa fa-shopping-cart"></i>
         {cartCount > 0 && <span className="cart-count-bubble">{cartCount}</span>}
-        {renderCartDropdown()}
       </div>
       <div className={'nav-anchors-wrap anchor-wrap-doc' + (mobileMenuOpen ? ' mobile-menu-open' : '')}>
         {user && (
