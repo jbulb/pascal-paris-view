@@ -98,6 +98,8 @@ function Nav() {
     </div>
   );
 
+  const cartTooltip = `${cartCount} item${cartCount === 1 ? '' : 's'} in cart`;
+
   return (
     <>
     <nav>
@@ -112,6 +114,21 @@ function Nav() {
       <a className="hamburger-toggle" onClick={toggleMobileMenu}>
         <i className={mobileMenuOpen ? 'fa fa-times' : 'fa fa-bars'}></i>
       </a>
+      {/* Always-visible cart indicator: count bubble, click -> cart,
+          hover summary dropdown on devices that can hover. */}
+      <div
+        className="cart-badge-anchor"
+        onClick={() => { closeMobileMenu(); navigate('/cart'); }}
+        onMouseEnter={showCartDropdown}
+        onMouseLeave={hideCartDropdown}
+        role="link"
+        aria-label={cartTooltip}
+        title={cartTooltip}
+      >
+        <i className="fa fa-shopping-cart"></i>
+        {cartCount > 0 && <span className="cart-count-bubble">{cartCount}</span>}
+        {renderCartDropdown()}
+      </div>
       <div className={'nav-anchors-wrap anchor-wrap-doc' + (mobileMenuOpen ? ' mobile-menu-open' : '')}>
         {user && (
           <span className="nav-mobile-greeting">
@@ -140,11 +157,8 @@ function Nav() {
         )}
         <div
           onClick={() => { closeMobileMenu(); navigate('/cart'); }}
-          onMouseEnter={showCartDropdown}
-          onMouseLeave={hideCartDropdown}
           className="shopping-cart-anchor"
         >
-          {renderCartDropdown()}
           <span className="cart-link-label">
             <i className="fa fa-shopping-cart"></i> Cart ({cartCount})
           </span>

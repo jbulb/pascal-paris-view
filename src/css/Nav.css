@@ -130,6 +130,49 @@ a.nav-anchors-wrap-selected{
   display: none;
 }
 
+/* Always-visible cart indicator (top-right). Click -> /cart; on
+   hover-capable devices it also shows the summary dropdown. */
+.cart-badge-anchor{
+  position: absolute;
+  top: 28px;
+  right: 40px;
+  min-width: 44px;
+  min-height: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 22px;
+  color: #151513;
+  cursor: pointer;
+  z-index: 20;
+  transition: color .25s;
+}
+.cart-badge-anchor:hover{
+  color: #818A96;
+}
+.cart-count-bubble{
+  position: absolute;
+  top: 3px;
+  right: 1px;
+  min-width: 18px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 3px;
+  box-sizing: border-box;
+  border-radius: 9px;
+  background-color: #EE6E81;
+  color: #fff;
+  font-family: 'Khula', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+.cart-badge-anchor .shopping-cart-dropdown{
+  top: 46px;
+  right: 0;
+  text-align: left;
+  cursor: default;
+}
+
 /* Signed-in user badge — top-left so it stays visible alongside the hamburger on the right */
 .nav-user-badge{
   position: absolute;
@@ -166,15 +209,34 @@ font-family: 'Advent Pro', sans-serif;
 font-family: 'Antic', sans-serif;
 */
 
-/* Portrait phones: the dropdown spans the full-width cart button instead of
-   its fixed 500px desktop width. This rule lives HERE (not Mobile.css) on
-   purpose — it must come after the base .shopping-cart-dropdown rule in the
-   production bundle, and same-file order is the only guaranteed order. */
+/* Responsive rules live HERE (not Mobile.css) on purpose — they must come
+   after the base rules in the production bundle, and same-file order is the
+   only guaranteed order. */
+
+/* Desktop: the badge replaces the in-menu cart entry. */
+@media (min-width: 1081px) {
+  .shopping-cart-anchor{
+    display: none;
+  }
+}
+
+/* Tablet/phone: align the badge with the hamburger, leaving it room. */
+@media (max-width: 1080px) {
+  .cart-badge-anchor{
+    top: 10px;
+    right: 64px;
+  }
+}
+
+/* Narrow hover-capable windows: the dropdown can't anchor to the tiny badge,
+   so pin it to the viewport instead. (Touch devices never open it.) */
 @media (max-width: 600px) {
   .shopping-cart-dropdown{
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: 100px;
     width: auto;
-    left: 0;
-    right: 0;
     box-sizing: border-box;
     max-height: 55vh;
   }
