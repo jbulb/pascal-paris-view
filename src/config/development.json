@@ -4,7 +4,9 @@
   "productsUrl": {
     "featured": "/api/products/featured",
     "biomineral": "/api/products/biomineral",
-    "botanical": "/api/products/botanical"
+    "botanical": "/api/products/botanical",
+    "bundle-packages": "/api/products/bundle-packages",
+    "merchandise": "/api/products/merchandise"
   },
   "paymentCheckoutUrl": "/api/cart/checkout"
 }

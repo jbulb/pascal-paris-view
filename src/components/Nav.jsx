@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { removeFromCart } from '../store/cartSlice';
+import { removeFromCart, cartItemKey } from '../store/cartSlice';
 import { signOut as cognitoSignOut, getUserInfo } from '../auth/cognito';
 import '../css/Nav.css';
 
@@ -72,7 +72,7 @@ function Nav() {
               <a
                 onClick={(e) => {
                   e.preventDefault();
-                  dispatch(removeFromCart(item.title));
+                  dispatch(removeFromCart(cartItemKey(item)));
                 }}
               >
                 Remove Item

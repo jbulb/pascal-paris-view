@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Nav from '../Nav';
 import Footer from '../Footer';
-import { removeFromCart, updateCartQuantity } from '../../store/cartSlice';
+import { removeFromCart, updateCartQuantity, cartItemKey } from '../../store/cartSlice';
 import UserUtil from '../../util/UserUtil';
 import '../../css/ShoppingCart.css';
 
@@ -43,6 +43,7 @@ function ShoppingCart() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: cartItems.map((item) => ({
+            id: item.id ?? null,
             title: item.title,
             quantity: item.quantity,
           })),
@@ -104,7 +105,7 @@ function ShoppingCart() {
                   <p className="shopping-item-description">
                     {item.desc || item.description}
                   </p>
-                  <a onClick={() => dispatch(removeFromCart(item.title))}>Remove Item</a>
+                  <a onClick={() => dispatch(removeFromCart(cartItemKey(item)))}>Remove Item</a>
                 </div>
                 <div className="shopping-item-amount shopping-item-inline">
                   <input
@@ -114,7 +115,7 @@ function ShoppingCart() {
                     onChange={(e) =>
                       dispatch(
                         updateCartQuantity({
-                          title: item.title,
+                          key: cartItemKey(item),
                           quantity: parseInt(e.target.value, 10) || 1,
                         })
                       )
