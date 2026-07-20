@@ -89,7 +89,9 @@ function Nav() {
       })}
       {cartItems.length > 0 && (
         <div className="checkout">
-          <Link to="/cart">Continue to Checkout</Link>
+          {/* Goes to the cart page (review quantities, then pay) — label it
+              honestly so it doesn't read like a direct payment button. */}
+          <Link to="/cart">Review Bag &amp; Checkout</Link>
         </div>
       )}
       {cartItems.length === 0 && (

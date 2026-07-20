@@ -48,12 +48,20 @@ function ShoppingCart() {
           })),
         }),
       });
-      if (!response.ok) throw new Error('Checkout failed');
+      if (!response.ok) {
+        // Prefer the API's explanation (e.g. which items are no longer
+        // available) over a generic message.
+        let detail = '';
+        try { detail = (await response.json()).detail || ''; } catch { /* not JSON */ }
+        throw new Error(detail);
+      }
       const { url } = await response.json();
       // Redirect to Stripe's hosted checkout page.
       window.location.assign(url);
-    } catch {
-      setCheckoutError('Something went wrong starting checkout. Please try again.');
+    } catch (err) {
+      setCheckoutError(
+        err.message || 'Something went wrong starting checkout. Please try again.'
+      );
       setCheckingOut(false);
     }
   };
